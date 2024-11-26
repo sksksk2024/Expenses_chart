@@ -22,7 +22,7 @@ function Spending() {
             ></div>
 
             {/* Label */}
-            <label>{item.day}</label>
+            <label aria-label='day of the week'>{item.day}</label>
 
             {/* Tooltip */}
             <div className="absolute bottom-full mb-8 hidden group-hover:block bg-black text-white text-xs rounded px-2 py-1 z-50">
