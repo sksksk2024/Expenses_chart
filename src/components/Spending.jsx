@@ -15,6 +15,7 @@ function Spending() {
           >
             {/* Bar */}
             <div
+              aria-label='day of the week - candlestick'
               className={`rounded-5BR w-32W md:w-48W ${item.day === 'wed' ? 'bg-cyan group-hover:bg-light-cyan' : 'bg-soft-red group-hover:bg-light-soft-red'}`}
               style={{
                 height: `${item.amount * 3}px`, // Scale amount for height
@@ -25,7 +26,7 @@ function Spending() {
             <label aria-label='day of the week'>{item.day}</label>
 
             {/* Tooltip */}
-            <div className="absolute bottom-full mb-8 hidden group-hover:block bg-black text-white text-xs rounded px-2 py-1 z-50">
+            <div aria-label='how much money spent' className="absolute bottom-full mb-8 hidden group-hover:block bg-black text-white text-xs rounded px-2 py-1 z-50">
               ${item.amount.toFixed(2)}
             </div>
           </div>
