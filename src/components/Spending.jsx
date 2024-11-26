@@ -8,30 +8,37 @@ function Spending() {
       </h1>
 
       <div className="form flex flex-row justify-between items-end">
-        {data.map((item, index) => (
-          <div
-            key={index}
-            className="flex flex-col justify-center items-center relative group"
-          >
-            {/* Bar */}
-            <div
-              aria-label='day of the week - candlestick'
-              className={`rounded-5BR w-32W md:w-48W ${item.day === 'wed' ? 'bg-cyan group-hover:bg-light-cyan' : 'bg-soft-red group-hover:bg-light-soft-red'}`}
-              style={{
-                height: `${item.amount * 3}px`, // Scale amount for height
-              }}
-            ></div>
+  {data.map((item, index) => (
+    <div
+      key={index}
+      className="flex flex-col justify-center items-center relative group"
+    >
+      {/* Bar */}
+      <div
+        id={`bar-${index}`} // Unique ID
+        role="img" // Role to identify the element's purpose
+        aria-label={`Spending bar for ${item.day}. Amount: $${item.amount.toFixed(2)}`}
+        className={`rounded-5BR w-32W md:w-48W ${item.day === 'wed' ? 'bg-cyan group-hover:bg-light-cyan' : 'bg-soft-red group-hover:bg-light-soft-red'}`}
+        style={{
+          height: `${item.amount * 3}px`, // Scale amount for height
+        }}
+      ></div>
 
-            {/* Label */}
-            <label aria-label='day of the week'>{item.day}</label>
+      {/* Label */}
+      <label htmlFor={`bar-${index}`} className="sr-only">
+        {item.day}
+      </label>
 
-            {/* Tooltip */}
-            <div aria-label='how much money spent' className="absolute bottom-full mb-8 hidden group-hover:block bg-black text-white text-xs rounded px-2 py-1 z-50">
-              ${item.amount.toFixed(2)}
-            </div>
-          </div>
-        ))}
+      {/* Tooltip */}
+      <div
+        role="tooltip"
+        className="absolute bottom-full mb-8 hidden group-hover:block bg-black text-white text-xs rounded px-2 py-1 z-50"
+      >
+        ${item.amount.toFixed(2)}
       </div>
+    </div>
+      ))}
+    </div>
 
       <hr className="my-32M" />
 
